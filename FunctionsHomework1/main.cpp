@@ -2,13 +2,10 @@
 #include "Constants.h"
 #include "Sort.h"
 #include "FillRand.h"
-#include "Sort.cpp"
-#include "FillRand.cpp"
+#include "Shifts.h"
+#include "Print.h"
 
-template<typename T>
-void Print(T arr[], const int n);
-template<typename T>
-void Print(T arr[ROWS][COLS], const int ROWS, const int COLS);
+
 
 template<typename T>
 T Sum(T arr[], const int n);
@@ -30,17 +27,6 @@ T Max(T arr[], const int n);
 template<typename T>
 T Max(T arr[ROWS][COLS], const int ROWS, const int COLS);
 
-template<typename T>
-void LeftShift(T arr[], const int n, int shifts);
-template<typename T>
-void LeftShift(T arr[ROWS][COLS], const int ROWS, const int COLS , int shifts);
-template<typename T>
-void LeftShift2(T arr[ROWS][COLS], const int ROWS, const int COLS, int shifts); // Сквозной массив
-
-template<typename T>
-void RightShift(T arr[], const int n, int shifts);
-template<typename T>
-void RightShift(T arr[ROWS][COLS], const int ROWS, const int COLS, int shifts);
 
 void main()
 {
@@ -290,80 +276,8 @@ T Max(T arr[ROWS][COLS], const int ROWS, const int COLS)
 	cout << "Максимальное значение двойного массива int: ";
 	return buffer;
 }
-template<typename T>
-void LeftShift(T arr[], const int n, int shifts)
-{
-	for (int i = 0; i < shifts; i++)
-	{
-		T buffer = arr[0];
-		for (int x = 0; x < n; x++)
-		{
-			arr[x] = arr[x + 1];
 
-		}
-		arr[n - 1] = buffer;
-	}
-}
 
-template<typename T>
-void LeftShift(T arr[ROWS][COLS], const int ROWS, const int COLS , int shifts)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		LeftShift(arr[i], COLS, shifts);
-	}
-}
-template<typename T>
-void LeftShift2(T arr[ROWS][COLS], const int ROWS, const int COLS, int shifts)
-{
-	
-	LeftShift(arr[0], ROWS*COLS, shifts);
-	
-}
-template<typename T>
-void RightShift(T arr[], const int n, int shifts)
-{
-	for (int i = 0; i < shifts; i++)
-	{
-		T buffer = arr[n - 1];
-		for (int x = n - 1; x > 0; x--)
-		{
-			arr[x] = arr[x - 1];
-
-		}
-		arr[0] = buffer;
-	}
-}
-template<typename T>
-void RightShift(T arr[ROWS][COLS], const int ROWS, const int COLS, int shifts)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		LeftShift(arr[i], COLS, COLS - shifts);
-	}
-}
-template<typename T>
-void Print(T arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-}
-template<typename T>
-void Print(T arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			cout << arr[i][j] << "\t";
-		}
-		cout << endl;
-	}
-	cout << endl;
-
-}
 
 
 
