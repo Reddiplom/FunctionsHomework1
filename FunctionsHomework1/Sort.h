@@ -1,4 +1,5 @@
 #pragma once
+#include "Constants.h"
 template<typename T>
 void Sort(T arr[], const int n);
 template<typename T>

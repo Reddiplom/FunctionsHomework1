@@ -1,5 +1,3 @@
-#include "stdafx.h"
-#include "Constants.h"
 #include "FillRand.h"
 
 void FillRand(int arr[], const int n)
